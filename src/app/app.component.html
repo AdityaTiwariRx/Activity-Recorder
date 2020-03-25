@@ -1,0 +1,43 @@
+<div align="center" style="margin-top:100px">
+<hello name="{{ name }}"></hello>
+<h4><b>Track your Activity here</b></h4><br>
+<form >
+  <div class="form-group" style="width:300px">
+    <label for="exampleFormControlSelect1">Select Your Activity</label>
+    <select class="form-control" (change)="send($event)">
+      <option selected="" disabled="">Choose any one Option</option>
+      <option>Documentation</option>
+      <option>Coding and Design</option>
+      </select>
+  </div>
+</form>
+<div >
+    <button [disabled]="btnDisabled" class="btn btn-info"(click)="start()">Start Activity</button>
+
+    <button [disabled]="btnDisabled1"  style="margin-left:20px" class="btn btn-info" (click)="stop()">End Activity</button><br><br>
+
+    <button [disabled]="btnDisabled" class="btn btn-danger"(click)="reset()">Reset</button>
+
+  </div>
+  </div>
+
+<div style="width: 100px; text-align:center; position: relative; left: 50%; transform: translateX(-50%);">
+  <h3>{{ timer$ | async }}</h3>
+</div>
+<button style="position: relative; left: 50%; transform: translateX(-50%);" class="btn btn-success"(click)="record()">Add Records</button>
+
+<h5><b>Time you have taken to Complete this Activity :</b></h5>
+
+ <div *ngFor="let r of history">
+       The Activity of yours is :
+    <span style="color:green">{{r.Activity}} </span> 
+    
+ </div>
+<div *ngFor="let time of timeList$ | async">
+  The Time Duration is :
+ <span style="color:red">{{ time }} </span> 
+  
+    </div>
+    
+
+ 
